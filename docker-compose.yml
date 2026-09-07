@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: pulsecare_db
+    restart: always
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init-databases.sql:/docker-entrypoint-initdb.d/init-databases.sql:ro
+    environment:
+      POSTGRES_DB: ${AGENDAMENTO_DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - pulsecare_network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: pulsecare_rabbitmq
+    restart: always
+    ports:
+      - "${RABBITMQ_PORT}:5672"
+      - "${RABBITMQ_MANAGEMENT_PORT}:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    networks:
+      - pulsecare_network
+
+volumes:
+  postgres_data:
+
+networks:
+  pulsecare_network:
+    driver: bridge

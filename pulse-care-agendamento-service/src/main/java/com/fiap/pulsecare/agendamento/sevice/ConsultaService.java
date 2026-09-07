@@ -6,6 +6,7 @@ import com.fiap.pulsecare.agendamento.domain.entity.Usuario;
 import com.fiap.pulsecare.agendamento.domain.vo.ConsultaUpdateVO;
 import com.fiap.pulsecare.agendamento.domain.vo.ConsultaVO;
 import com.fiap.pulsecare.agendamento.mapper.ConsultaMapper;
+import com.fiap.pulsecare.agendamento.messaging.ConsultaEventPublisher;
 import com.fiap.pulsecare.agendamento.repository.ConsultaRepository;
 import com.fiap.pulsecare.agendamento.repository.UsuarioRepository;
 import com.fiap.pulsecare.core.exception.BusinessException;
@@ -25,6 +26,7 @@ public class ConsultaService {
 	private final ConsultaRepository consultaRepository;
 	private final UsuarioRepository usuarioRepository;
 	private final ConsultaMapper consultaMapper;
+	private final ConsultaEventPublisher consultaEventPublisher;
 
 	@Transactional
 	public ConsultaDTO cadastrar(ConsultaVO vo) {
@@ -43,6 +45,8 @@ public class ConsultaService {
 
 		consulta = consultaRepository.save(consulta);
 
+		consultaEventPublisher.publicarConsultaCriada(consulta);
+
 		log.info("Consulta cadastrada com sucesso, id: {}", consulta.getId());
 
 		return consultaMapper.toDTO(consulta);
@@ -59,6 +63,8 @@ public class ConsultaService {
 		consultaMapper.updateFromVO(vo, consulta);
 
 		consulta = consultaRepository.save(consulta);
+
+		consultaEventPublisher.publicarConsultaEditada(consulta);
 
 		log.info("Consulta com ID: {} atualizada com sucesso", id);
 

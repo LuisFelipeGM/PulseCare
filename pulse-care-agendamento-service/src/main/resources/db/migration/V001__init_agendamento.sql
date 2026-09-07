@@ -1,5 +1,5 @@
 CREATE TABLE tipo_usuario (
-    id INTEGER NOT NULL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     descricao VARCHAR(20) NOT NULL UNIQUE
 );
 

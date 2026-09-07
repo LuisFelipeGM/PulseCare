@@ -1,0 +1,68 @@
+{
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "users": [
+    {
+      "name": "pulsecare",
+      "password": "pulsecare",
+      "tags": ["administrator"]
+    }
+  ],
+  "permissions": [
+    {
+      "user": "pulsecare",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "consulta.exchange",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "queues": [
+    {
+      "name": "notificacao.consulta.queue",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "historico.consulta.queue",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "consulta.exchange",
+      "vhost": "/",
+      "destination": "notificacao.consulta.queue",
+      "destination_type": "queue",
+      "routing_key": "consulta.*",
+      "arguments": {}
+    },
+    {
+      "source": "consulta.exchange",
+      "vhost": "/",
+      "destination": "historico.consulta.queue",
+      "destination_type": "queue",
+      "routing_key": "consulta.*",
+      "arguments": {}
+    }
+  ]
+}

@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-	implementation project(':core')
+	implementation project(':pulse-care-core')
 
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
 

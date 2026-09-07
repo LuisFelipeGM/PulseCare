@@ -1,17 +1,15 @@
 plugins {
-	id 'pulsecare.spring-boot-commons'
+	id 'pulsecare.flyway-commons'
 }
 
 dependencies {
-	implementation project(':core')
+	implementation project(':pulse-care-core')
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
-
-	runtimeOnly 'org.postgresql:postgresql'
 
 	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'org.springframework.amqp:spring-rabbit-test'

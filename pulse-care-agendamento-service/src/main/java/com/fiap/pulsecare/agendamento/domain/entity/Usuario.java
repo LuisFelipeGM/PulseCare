@@ -39,7 +39,7 @@ public class Usuario {
 	@Column(nullable = false)
 	private String senha;
 
-	@Column(name = "data_criacao", nullable = false, updatable = false)
+	@Column(name = "data_criacao", nullable = false, insertable = false, updatable = false)
 	private LocalDateTime dataCriacao;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)

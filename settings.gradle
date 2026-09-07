@@ -1,0 +1,6 @@
+rootProject.name = 'pulse-care'
+
+include 'core'
+include 'agendamento-service'
+include 'notificacao-service'
+include 'historico-service'

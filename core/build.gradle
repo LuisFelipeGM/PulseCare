@@ -1,0 +1,18 @@
+plugins {
+	id 'pulsecare.java-conventions'
+	id 'java-library'
+}
+
+dependencies {
+	api platform('org.springframework.boot:spring-boot-dependencies:4.1.1')
+
+	api 'org.springframework:spring-web'
+	api 'org.springframework.security:spring-security-core'
+	api 'org.springframework.security:spring-security-web'
+
+	api 'io.jsonwebtoken:jjwt-api:0.12.6'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6'
+
+	compileOnly 'jakarta.servlet:jakarta.servlet-api'
+}

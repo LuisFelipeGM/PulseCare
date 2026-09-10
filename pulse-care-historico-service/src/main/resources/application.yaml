@@ -29,6 +29,10 @@ spring:
     username: ${RABBITMQ_USER:pulsecare}
     password: ${RABBITMQ_PASSWORD:pulsecare}
 
+  graphql:
+    graphiql:
+      enabled: true
+
 springdoc:
   swagger-ui:
     path: /swagger-ui.html

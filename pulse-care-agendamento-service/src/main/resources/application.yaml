@@ -4,12 +4,16 @@ server:
 pulsecare:
   security:
     jwt:
-      secret: ${JWT_SECRET:secret-key-pulsecare}
+      secret: ${JWT_SECRET:jFetqOFQD0z5Vsc2Qm31LKTPWnCa9xdf}
       expiration-ms: ${JWT_EXPIRATION_MS:3600000}
 
 spring:
   application:
     name: agendamento-service
+
+  mvc:
+    problemdetails:
+      enabled: true
 
   datasource:
     url: ${AGENDAMENTO_DATASOURCE_URL:jdbc:postgresql://localhost:5432/agendamento_db}

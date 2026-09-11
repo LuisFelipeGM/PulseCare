@@ -3,7 +3,7 @@ package com.fiap.pulsecare.agendamento;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.fiap.pulsecare")
 public class AgendamentoServiceApplication {
 
 	public static void main(String[] args) {

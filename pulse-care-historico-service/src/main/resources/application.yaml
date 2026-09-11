@@ -1,6 +1,12 @@
 server:
   port: 3711
 
+pulsecare:
+  security:
+    jwt:
+      secret: ${JWT_SECRET:secret-key-pulsecare}
+      expiration-ms: ${JWT_EXPIRATION_MS:3600000}
+
 spring:
   application:
     name: historico-service

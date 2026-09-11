@@ -1,0 +1,24 @@
+# Git
+.git
+.gitignore
+
+# IDEs
+.idea
+.vscode
+*.iml
+
+# Build / dependências (diretórios de output, não os build.gradle)
+**/build/
+out
+bin
+.gradle
+
+# Logs
+*.log
+
+# Docker
+docker-compose*.yml
+
+# Outros
+*.postman_collection.json
+docker

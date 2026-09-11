@@ -12,6 +12,11 @@ services:
       POSTGRES_DB: ${AGENDAMENTO_DB_NAME}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
     networks:
       - pulsecare_network
 
@@ -25,6 +30,85 @@ services:
     volumes:
       - ./docker/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
       - ./docker/rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "check_port_connectivity"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - pulsecare_network
+
+  agendamento-service:
+    build:
+      context: .
+      args:
+        SERVICE_MODULE: pulse-care-agendamento-service
+    container_name: pulsecare_agendamento
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - "${AGENDAMENTO_PORT:-3710}:3710"
+    environment:
+      AGENDAMENTO_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${AGENDAMENTO_DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: ${RABBITMQ_USER}
+      RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS}
+    networks:
+      - pulsecare_network
+
+  notificacao-service:
+    build:
+      context: .
+      args:
+        SERVICE_MODULE: pulse-care-notificacao-service
+    container_name: pulsecare_notificacao
+    restart: always
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - "${NOTIFICACAO_PORT:-3712}:3712"
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: ${RABBITMQ_USER}
+      RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
+    networks:
+      - pulsecare_network
+
+  historico-service:
+    build:
+      context: .
+      args:
+        SERVICE_MODULE: pulse-care-historico-service
+    container_name: pulsecare_historico
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - "${HISTORICO_PORT:-3711}:3711"
+    environment:
+      HISTORICO_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${HISTORICO_DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: ${RABBITMQ_USER}
+      RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS}
     networks:
       - pulsecare_network
 

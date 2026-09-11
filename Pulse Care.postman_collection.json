@@ -1,0 +1,1320 @@
+{
+  "info": {
+    "_postman_id": "345df94b-84dd-4725-bf60-11e5e0a15812",
+    "name": "Pulse Care",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23735733"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "item": [
+        {
+          "name": "Sucesso",
+          "item": [
+            {
+              "name": "Login Médico",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.collectionVariables.set(\"token\", pm.response.json().token);"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"medico.seed@pulsecare.com\",\n    \"senha\": \"Senha123!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/auth/login",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Login Enfermeiro",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.collectionVariables.set(\"tokenEnfermeiro\", pm.response.json().token);"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"enfermeiro.seed@pulsecare.com\",\n    \"senha\": \"Senha123!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/auth/login",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Login Paciente",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.collectionVariables.set(\"tokenPaciente\", pm.response.json().token);"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"paciente.seed@pulsecare.com\",\n    \"senha\": \"Senha123!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/auth/login",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Erro",
+          "item": [
+            {
+              "name": "Erro Login Credenciais Inválidas",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"medico.seed@pulsecare.com\",\n    \"senha\": \"SenhaErrada999!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/auth/login",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Login Usuário Não Encontrado",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"naoexiste@pulsecare.com\",\n    \"senha\": \"Senha123!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/auth/login",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Login Email Vazio",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"\",\n    \"senha\": \"Senha123!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/auth/login",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tipo Usuário",
+      "item": [
+        {
+          "name": "Sucesso",
+          "item": [
+            {
+              "name": "Listar Todos os Tipos de Usuário",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/tipos-usuario",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "tipos-usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Buscar Tipo de Usuário por Id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/tipos-usuario/1",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "tipos-usuario",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Erro",
+          "item": [
+            {
+              "name": "Erro Tipo de Usuário Não Encontrado",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/tipos-usuario/999999",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "tipos-usuario",
+                    "999999"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Usuário",
+      "item": [
+        {
+          "name": "Sucesso",
+          "item": [
+            {
+              "name": "Listar Usuários Paginado",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios?page=0&size=5",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Buscar Usuário por Id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios/9003",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios",
+                    "9003"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Cadastrar Usuário",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"nome\": \"Novo Usuario Teste\",\n    \"email\": \"novo.usuario.seed@pulsecare.com\",\n    \"senha\": \"Senha123!\",\n    \"tipoUsuarioId\": 3\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualizar Usuário",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"nome\": \"Paciente Update Teste Atualizado\",\n    \"email\": \"paciente.update.atualizado@pulsecare.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios/9004",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios",
+                    "9004"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Alterar Senha",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"senhaAtual\": \"Senha123!\",\n    \"novaSenha\": \"NovaSenha456!\",\n    \"confirmacaoSenha\": \"NovaSenha456!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios/9006/senha",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios",
+                    "9006",
+                    "senha"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Deletar Usuário",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios/9005",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios",
+                    "9005"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Erro",
+          "item": [
+            {
+              "name": "Erro Buscar Usuário Não Encontrado",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios/999999",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios",
+                    "999999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Cadastro Email Já Cadastrado",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"nome\": \"Duplicado Teste\",\n    \"email\": \"medico.seed@pulsecare.com\",\n    \"senha\": \"Senha123!\",\n    \"tipoUsuarioId\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Cadastro Senha Fraca",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"nome\": \"Senha Fraca Teste\",\n    \"email\": \"senhafraca.seed@pulsecare.com\",\n    \"senha\": \"abcdefgh\",\n    \"tipoUsuarioId\": 3\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Cadastro Tipo de Usuário Inexistente",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"nome\": \"Tipo Inexistente Teste\",\n    \"email\": \"tipoinexistente.seed@pulsecare.com\",\n    \"senha\": \"Senha123!\",\n    \"tipoUsuarioId\": 999999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Cadastro Nome Vazio",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"nome\": \"\",\n    \"email\": \"nomevazio.seed@pulsecare.com\",\n    \"senha\": \"Senha123!\",\n    \"tipoUsuarioId\": 3\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Atualização Usuário Não Encontrado",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"nome\": \"Não Encontrado Teste\",\n    \"email\": \"naoencontrado.seed@pulsecare.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios/999999",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios",
+                    "999999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Atualização Email Já Cadastrado",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"nome\": \"Paciente Update Teste\",\n    \"email\": \"medico.seed@pulsecare.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios/9004",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios",
+                    "9004"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alterar Senha - Senha Atual Inválida",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"senhaAtual\": \"SenhaErrada999!\",\n    \"novaSenha\": \"NovaSenha456!\",\n    \"confirmacaoSenha\": \"NovaSenha456!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios/9007/senha",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios",
+                    "9007",
+                    "senha"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alterar Senha - Nova Senha Igual a Atual",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"senhaAtual\": \"Senha123!\",\n    \"novaSenha\": \"Senha123!\",\n    \"confirmacaoSenha\": \"Senha123!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios/9007/senha",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios",
+                    "9007",
+                    "senha"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alterar Senha - Confirmação Não Confere",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"senhaAtual\": \"Senha123!\",\n    \"novaSenha\": \"NovaSenha456!\",\n    \"confirmacaoSenha\": \"SenhaDiferente789!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios/9007/senha",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios",
+                    "9007",
+                    "senha"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Deletar Usuário Não Encontrado",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/usuarios/999999",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "usuarios",
+                    "999999"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Consulta",
+      "item": [
+        {
+          "name": "Sucesso",
+          "item": [
+            {
+              "name": "Cadastrar Consulta",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"pacienteId\": 9003,\n    \"medicoId\": 9001,\n    \"dataHora\": \"2027-08-01T09:00:00\",\n    \"status\": \"AGENDADA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualizar Consulta",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenEnfermeiro}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"dataHora\": \"2027-06-25T15:00:00\",\n    \"status\": \"CONFIRMADA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas/9002",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "9002"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Buscar Consulta por Id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas/9001",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "9001"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Listar Consultas por Paciente",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas?pacienteId=9003",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ],
+                  "query": [
+                    {
+                      "key": "pacienteId",
+                      "value": "9003"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Listar Consultas por Médico",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas?medicoId=9001",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ],
+                  "query": [
+                    {
+                      "key": "medicoId",
+                      "value": "9001"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Erro",
+          "item": [
+            {
+              "name": "Erro Cadastrar Sem Token",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"pacienteId\": 9003,\n    \"medicoId\": 9001,\n    \"dataHora\": \"2027-08-01T09:00:00\",\n    \"status\": \"AGENDADA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Cadastrar Com Token de Paciente",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPaciente}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"pacienteId\": 9003,\n    \"medicoId\": 9001,\n    \"dataHora\": \"2027-08-01T09:00:00\",\n    \"status\": \"AGENDADA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Cadastrar Paciente Não Encontrado",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"pacienteId\": 999999,\n    \"medicoId\": 9001,\n    \"dataHora\": \"2027-08-01T09:00:00\",\n    \"status\": \"AGENDADA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Cadastrar Médico Não Encontrado",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"pacienteId\": 9003,\n    \"medicoId\": 999999,\n    \"dataHora\": \"2027-08-01T09:00:00\",\n    \"status\": \"AGENDADA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Cadastrar Data no Passado",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"pacienteId\": 9003,\n    \"medicoId\": 9001,\n    \"dataHora\": \"2020-01-01T09:00:00\",\n    \"status\": \"AGENDADA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Atualizar Com Token de Paciente",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPaciente}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"dataHora\": \"2027-06-25T15:00:00\",\n    \"status\": \"CONFIRMADA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas/9002",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "9002"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Atualizar Consulta Não Encontrada",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"dataHora\": \"2027-06-25T15:00:00\",\n    \"status\": \"CONFIRMADA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas/999999",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "999999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Buscar Consulta Não Encontrada",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas/999999",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "999999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Listar Sem Filtro",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Listar Com Dois Filtros",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrlAgendamento}}/consultas?pacienteId=9003&medicoId=9001",
+                  "host": [
+                    "{{baseUrlAgendamento}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ],
+                  "query": [
+                    {
+                      "key": "pacienteId",
+                      "value": "9003"
+                    },
+                    {
+                      "key": "medicoId",
+                      "value": "9001"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Histórico (GraphQL)",
+      "item": [
+        {
+          "name": "Sucesso",
+          "item": [
+            {
+              "name": "Histórico por Paciente",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "query {\n  historicoPorPaciente(pacienteId: 9003) {\n    id\n    consultaId\n    pacienteNome\n    medicoNome\n    dataHora\n    status\n  }\n}",
+                    "variables": ""
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlHistorico}}/graphql",
+                  "host": [
+                    "{{baseUrlHistorico}}"
+                  ],
+                  "path": [
+                    "graphql"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Consultas Futuras",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "query {\n  consultasFuturas(pacienteId: 9003) {\n    consultaId\n    dataHora\n    status\n  }\n}",
+                    "variables": ""
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlHistorico}}/graphql",
+                  "host": [
+                    "{{baseUrlHistorico}}"
+                  ],
+                  "path": [
+                    "graphql"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Erro",
+          "item": [
+            {
+              "name": "Erro Sem Token",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "query {\n  historicoPorPaciente(pacienteId: 9003) {\n    consultaId\n    status\n  }\n}",
+                    "variables": ""
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlHistorico}}/graphql",
+                  "host": [
+                    "{{baseUrlHistorico}}"
+                  ],
+                  "path": [
+                    "graphql"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Argumento Obrigatório Ausente",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "query {\n  historicoPorPaciente {\n    consultaId\n    status\n  }\n}",
+                    "variables": ""
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrlHistorico}}/graphql",
+                  "host": [
+                    "{{baseUrlHistorico}}"
+                  ],
+                  "path": [
+                    "graphql"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrlAgendamento",
+      "value": "http://localhost:3710"
+    },
+    {
+      "key": "baseUrlHistorico",
+      "value": "http://localhost:3711"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "tokenEnfermeiro",
+      "value": ""
+    },
+    {
+      "key": "tokenPaciente",
+      "value": ""
+    }
+  ]
+}

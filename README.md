@@ -4,7 +4,7 @@ Projeto do **Tech Challenge da 3ª fase** da Pós-Graduação em **Arquitetura e
 
 O PulseCare é uma plataforma de agendamento hospitalar construída como um conjunto de **microsserviços** que se comunicam de forma assíncrona via **RabbitMQ**, protegidos por **autenticação JWT** compartilhada e organizados em um **monorepo Gradle multi-módulo**.
 
-👨‍💻 Desenvolvido por: **LuisFelipeGM**
+👨‍💻 Desenvolvido por: **LuisFelipeGM - RM: 371055**
 
 ![Java](https://img.shields.io/badge/Java-21-blue)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.1-green)

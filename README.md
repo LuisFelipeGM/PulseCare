@@ -14,6 +14,7 @@ O PulseCare é uma plataforma de agendamento hospitalar construída como um conj
 ![Flyway](https://img.shields.io/badge/Flyway-Migrations-CC0200?logo=flyway&logoColor=white)
 ![GraphQL](https://img.shields.io/badge/GraphQL-Historico-E10098?logo=graphql&logoColor=white)
 ![JWT](https://img.shields.io/badge/Auth-JWT-black?logo=jsonwebtokens)
+![Swagger](https://img.shields.io/badge/Swagger-OpenAPI-85EA2D?logo=swagger&logoColor=black)
 ![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker&logoColor=white)
 
 ---
@@ -122,6 +123,9 @@ Serviço consumidor com projeção de leitura (padrão **CQRS**). Escuta a fila 
 ## Segurança
 - JWT
 
+## Documentação
+- SpringDoc OpenAPI *(Swagger UI no `agendamento-service`)*
+
 ## Ferramentas
 - Lombok
 - Gradle (multi-módulo, com convention plugins em `buildSrc`)
@@ -199,6 +203,7 @@ Isso sobe o Postgres, o RabbitMQ e os 3 microsserviços, aplicando as migrations
 | historico-service | http://localhost:3711 |
 | notificacao-service | *(sem API HTTP pública — apenas consumidor)* |
 | RabbitMQ Management | http://localhost:15672 |
+| Swagger UI (agendamento-service) | http://localhost:3710/swagger-ui.html |
 
 *(portas conforme configuradas no `.env`)*
 
@@ -250,6 +255,8 @@ Os demais recursos (`/usuarios`, `/tipos-usuario`) exigem apenas um token válid
 # 🔌 API
 
 ## `agendamento-service` (REST)
+
+Todos os endpoints, DTOs e VOs abaixo também estão documentados via **Swagger/OpenAPI**: suba o serviço e acesse `http://localhost:3710/swagger-ui.html`. Clique em **Authorize** e cole apenas o token (sem o prefixo `Bearer`, obtido em `/auth/login`) para testar as rotas autenticadas direto pela UI.
 
 ### Auth
 

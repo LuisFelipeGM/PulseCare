@@ -19,6 +19,11 @@ O PulseCare é uma plataforma de agendamento hospitalar construída como um conj
 
 ---
 
+## Entregavéis:
+📄 3° Fase -  [3 Fase - PulseCare - Tech Challenge.pdf](3%20Fase%20-%20PulseCare%20-%20Tech%20Challenge.pdf)
+
+---
+
 # 🎯 Visão Geral
 
 O PulseCare permite o agendamento de consultas médicas, com cadastro de usuários (médicos, enfermeiros e pacientes) e propagação assíncrona de eventos de consulta para os demais serviços da plataforma.
